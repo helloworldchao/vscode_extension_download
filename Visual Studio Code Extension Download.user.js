@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Visual Studio Code Extension Download
-// @name         zh-CN VSCode 插件离线下载工具
+// @name:zh-CN   VSCode 插件离线下载工具
 // @namespace    https://blog.helloworldchao.tech/
-// @version      202503212016
+// @version      202503212022
 // @description  Download history version of vscode extension from official website https://marketplace.visualstudio.com/ easily
-// @description  zh-CN 从VSCode插件官网 https://marketplace.visualstudio.com/ 离线下载插件
+// @description:zh-CN 从VSCode插件官网 https://marketplace.visualstudio.com/ 离线下载插件
 // @author       helloworldchao
 // @match        *://marketplace.visualstudio.com/*
 // @grant        none
