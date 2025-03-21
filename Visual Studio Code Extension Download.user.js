@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         Visual Studio Code Extension Download
 // @namespace    https://blog.helloworldchao.tech/
-// @version      2025-03-21
+// @version      202503211555
 // @description  Download official visual studio code extension easily
 // @author       helloworldchao
 // @match        *://marketplace.visualstudio.com/*
 // @grant        none
+// @license      GPLv3
 // ==/UserScript==
 
 (function () {
