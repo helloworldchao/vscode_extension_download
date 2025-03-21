@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Visual Studio Code Extension Download
 // @namespace    https://blog.helloworldchao.tech/
-// @version      202503211555
+// @version      202503211610
 // @description  Download official visual studio code extension easily
 // @author       helloworldchao
 // @match        *://marketplace.visualstudio.com/*
@@ -38,7 +38,6 @@
         const itemNameArr = searchParams.get('itemName').split('.');
         const author = itemNameArr[0];
         const extName = itemNameArr[1];
-        console.log(author, extName, 22);
 
         waitElement('.version-history-table-body').then((el) => {
             for (let i = 0; i < el.childElementCount; i++) {
