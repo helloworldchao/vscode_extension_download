@@ -1,10 +1,10 @@
 // ==UserScript==
-// @name         Visual Studio Code Extension Download
-// @name:zh-CN   VSCode 插件离线下载工具
+// @name         Visual Studio Code Extension(vsix) Download(Cursor/Trae Install)
+// @name:zh-CN   VSCode 插件(vsix)离线下载工具(支持 Cursor/Trae 一键安装)
 // @namespace    https://blog.helloworldchao.tech/
-// @version      202503212022
-// @description  Download history version of vscode extension from official website https://marketplace.visualstudio.com/ easily
-// @description:zh-CN 从VSCode插件官网 https://marketplace.visualstudio.com/ 离线下载插件
+// @version      202505091054
+// @description  Download history version of vscode extension(vsix) from official website https://marketplace.visualstudio.com/ easily, support Cursor/Trae install one click.
+// @description:zh-CN 从VSCode插件官网 https://marketplace.visualstudio.com/ 离线下载插件(vsix)，支持 Cursor/Trae 一键安装。
 // @author       helloworldchao
 // @match        *://marketplace.visualstudio.com/*
 // @grant        none
@@ -33,6 +33,62 @@
             }, _waitTime);
         })
     }
+
+    const createElementBeforeLast = (tag, props, parent, child) => {
+        const el = document.createElement(tag);
+        for (const key in props) {
+            el[key] = props[key];
+        }
+        if (child) {
+            el.appendChild(child);
+        }
+        if (parent.childNodes.length > 1) {
+            parent.insertBefore(el, parent.childNodes[parent.childNodes.length - 1]);
+        }
+        return el;
+    }
+
+    const createElement = (tag, props, child) => {
+        const el = document.createElement(tag);
+        for (const key in props) {
+            el[key] = props[key];
+        }
+        if (child) {
+            el.appendChild(child);
+        }
+        return el;
+    }
+
+    waitElement('.ms-Fabric').then((el) => {
+        const openUrl = 'extension/ms-toolsai.jupyter';
+
+        const baseProps = {
+            target: '_blank',
+            style: 'margin-left: 10px; line-height: 32px; border: 0;',
+            className: 'ms-Button ux-button install ms-Button--default root-41'
+        }
+
+        const cursorA = createElement('a', {
+            ...baseProps,
+            href: `cursor:${openUrl}`,
+            innerText: 'Cursor Install',
+            style: `${baseProps.style} background-color: #000000;`,
+        })
+        const traeA = createElement('a', {
+            ...baseProps,
+            href: `trae:${openUrl}`,
+            innerText: 'Trae Install',
+            style: `${baseProps.style} background: linear-gradient(90deg, #FF4A36 0%, #DE96FB 100%);`,
+        })
+
+        createElementBeforeLast('span', {
+            className: 'ux-oneclick-install-button-container',
+        }, el, cursorA);
+
+        createElementBeforeLast('span', {
+            className: 'ux-oneclick-install-button-container',
+        }, el, traeA);
+    })
 
     const search = window.location.search;
     if (search) {
