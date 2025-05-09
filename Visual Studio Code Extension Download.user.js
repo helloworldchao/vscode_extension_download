@@ -2,7 +2,7 @@
 // @name         Visual Studio Code Extension(vsix) Download(Cursor/Trae Install)
 // @name:zh-CN   VSCode 插件(vsix)离线下载工具(支持 Cursor/Trae 一键安装)
 // @namespace    https://blog.helloworldchao.tech/
-// @version      202505091054
+// @version      202505091115
 // @description  Download history version of vscode extension(vsix) from official website https://marketplace.visualstudio.com/ easily, support Cursor/Trae install one click.
 // @description:zh-CN 从VSCode插件官网 https://marketplace.visualstudio.com/ 离线下载插件(vsix)，支持 Cursor/Trae 一键安装。
 // @author       helloworldchao
