@@ -42,7 +42,7 @@
         if (child) {
             el.appendChild(child);
         }
-        if (parent.childNodes.length > 1) {
+        if (parent.childNodes.length > 0) {
             parent.insertBefore(el, parent.childNodes[parent.childNodes.length - 1]);
         }
         return el;
@@ -59,36 +59,44 @@
         return el;
     }
 
-    waitElement('.ms-Fabric').then((el) => {
-        const openUrl = 'extension/ms-toolsai.jupyter';
+    const loadCheck = setInterval(async () => {
+        const header = await waitElement('.ux-section-header');
+        if (header.innerText === 'Categories') {
+            waitElement('.ms-Fabric').then((el) => {
+                const openUrl = 'extension/ms-toolsai.jupyter';
 
-        const baseProps = {
-            target: '_blank',
-            style: 'margin-left: 10px; line-height: 32px; border: 0;',
-            className: 'ms-Button ux-button install ms-Button--default root-41'
+                const baseProps = {
+                    target: '_blank',
+                    style: 'margin-left: 10px; line-height: 32px; border: 0;',
+                    className: 'ms-Button ux-button install ms-Button--default root-41'
+                }
+
+                const cursorA = createElement('a', {
+                    ...baseProps,
+                    href: `cursor:${openUrl}`,
+                    innerText: 'Cursor Install',
+                    style: `${baseProps.style} background-color: #000000;`,
+                })
+                const traeA = createElement('a', {
+                    ...baseProps,
+                    href: `trae:${openUrl}`,
+                    innerText: 'Trae Install',
+                    style: `${baseProps.style} background: linear-gradient(90deg, #FF4A36 0%, #DE96FB 100%);`,
+                })
+
+                createElementBeforeLast('span', {
+                    className: 'ux-oneclick-install-button-container',
+                }, el, cursorA);
+
+                createElementBeforeLast('span', {
+                    className: 'ux-oneclick-install-button-container',
+                }, el, traeA);
+            })
+
+            clearInterval(loadCheck);
+            return;
         }
-
-        const cursorA = createElement('a', {
-            ...baseProps,
-            href: `cursor:${openUrl}`,
-            innerText: 'Cursor Install',
-            style: `${baseProps.style} background-color: #000000;`,
-        })
-        const traeA = createElement('a', {
-            ...baseProps,
-            href: `trae:${openUrl}`,
-            innerText: 'Trae Install',
-            style: `${baseProps.style} background: linear-gradient(90deg, #FF4A36 0%, #DE96FB 100%);`,
-        })
-
-        createElementBeforeLast('span', {
-            className: 'ux-oneclick-install-button-container',
-        }, el, cursorA);
-
-        createElementBeforeLast('span', {
-            className: 'ux-oneclick-install-button-container',
-        }, el, traeA);
-    })
+    }, 500);
 
     const search = window.location.search;
     if (search) {
