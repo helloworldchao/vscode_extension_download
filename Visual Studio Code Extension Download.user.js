@@ -2,13 +2,13 @@
 // @name         Visual Studio Code Extension(vsix) Download(Cursor/Trae Install)
 // @name:zh-CN   VSCode 插件(vsix)离线下载工具(支持 Cursor/Trae 一键安装)
 // @namespace    https://blog.helloworldchao.tech/
-// @version      202505091115
+// @version      202505101422
 // @description  Download history version of vscode extension(vsix) from official website https://marketplace.visualstudio.com/ easily, support Cursor/Trae install one click.
 // @description:zh-CN 从VSCode插件官网 https://marketplace.visualstudio.com/ 离线下载插件(vsix)，支持 Cursor/Trae 一键安装。
 // @author       helloworldchao
 // @match        *://marketplace.visualstudio.com/*
 // @grant        none
-// @license      GPLv3
+// @license      GPLv3GPLv3
 // ==/UserScript==
 
 (function () {
@@ -67,7 +67,7 @@
 
                 const baseProps = {
                     target: '_blank',
-                    style: 'margin-left: 10px; line-height: 32px; border: 0;',
+                    style: 'margin-left: 10px; line-height: 32px; border: 0; color: ＃FFFFFF;',
                     className: 'ms-Button ux-button install ms-Button--default root-41'
                 }
 
